@@ -4,7 +4,7 @@ All Notable changes to `slim-annotation-based` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
-## 2.1.0 - 2018-07-25
+## 2.1.1 - 2018-07-25
 
 ### Added
 - Nothing
@@ -40,7 +40,7 @@ Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) princip
 - Nothing
 
 
-## 1.1.0 - 2018-07-25
+## 1.1.1 - 2018-07-25
 
 ### Added
 - Nothing

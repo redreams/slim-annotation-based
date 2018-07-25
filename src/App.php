@@ -230,7 +230,7 @@ class App extends SlimApp
      *
      * @return void
      */
-    protected function handleActionAnnotations(array $methodAnnotations, RouteInterface $route)
+    protected function handleActionAnnotations(array $methodAnnotations, RouteInterface $route): void
     {
     }
 }
