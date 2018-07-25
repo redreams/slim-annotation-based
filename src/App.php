@@ -83,7 +83,7 @@ class App extends SlimApp
      * @throws \InvalidArgumentException
      * @throws \ReflectionException
      */
-    protected function loadControllers(string $controllerDir)
+    protected function loadControllers(string $controllerDir): void
     {
         /** @var SplFileInfo $file */
         foreach ($this->getControllerFiles($controllerDir) as $file) {
@@ -101,7 +101,7 @@ class App extends SlimApp
      * @throws \ReflectionException
      * @throws \InvalidArgumentException
      */
-    protected function addRoutes(string $class)
+    protected function addRoutes(string $class): void
     {
         static $instance;
         /** @var Router $router */
