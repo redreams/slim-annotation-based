@@ -120,13 +120,13 @@ The MIT License (MIT). Please see [License File](LICENSE) for more information.
 [ico-license]: https://img.shields.io/packagist/l/redreams/slim-annotation-based.svg
 [ico-coverage]: https://img.shields.io/scrutinizer/coverage/g/redreams/slim-annotation-based.svg?style=flat
 [ico-code-quality-scrutinizer]: https://img.shields.io/scrutinizer/g/redreams/slim-annotation-based.svg?style=flat
-[ico-code-quality-sensio]: https://insight.sensiolabs.com/projects/7b204cda-a4d0-4f12-b472-dcddc126a9d1/mini.png
+[ico-code-quality-sensio]: https://insight.sensiolabs.com/projects/2f7fd89f-1300-4cd8-8347-8817e52583fb/mini.png
 [ico-downloads]: https://img.shields.io/packagist/dt/redreams/slim-annotation-based.svg?style=flat
 
 [link-packagist]: https://packagist.org/packages/redreams/slim-annotation-based
 [link-coverage]: https://scrutinizer-ci.com/g/redreams/slim-annotation-based/code-structure
 [link-code-quality-scrutinizer]: https://scrutinizer-ci.com/g/redreams/slim-annotation-based
-[link-code-quality-sensio]: https://insight.sensiolabs.com/projects/7b204cda-a4d0-4f12-b472-dcddc126a9d1
+[link-code-quality-sensio]: https://insight.sensiolabs.com/projects/2f7fd89f-1300-4cd8-8347-8817e52583fb
 [link-downloads]: https://packagist.org/packages/redreams/slim-annotation-based
 [link-author]: http://gennadyx.tech
 [link-contributors]: https://github.com/redreams/slim-annotation-based/contributors
