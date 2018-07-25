@@ -29,15 +29,14 @@ use Redreams\Slim\Annotation\Route;
 use Redreams\Slim\Exception\InvalidArgumentException;
 use ReflectionClass;
 use ReflectionParameter;
-use function rtrim;
 use Slim\App as SlimApp;
 use Slim\Router;
 use SplFileInfo;
 use function file_get_contents;
 use function is_dir;
+use function rtrim;
 use function sprintf;
 use function trim;
-use function var_dump;
 
 /**
  * Class App
