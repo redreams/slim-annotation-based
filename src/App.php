@@ -28,9 +28,9 @@ use Redreams\ClassFinder\ClassFinder;
 use Redreams\Slim\Annotation\Route;
 use Redreams\Slim\Exception\InvalidArgumentException;
 use ReflectionClass;
-use ReflectionMethod;
 use ReflectionParameter;
 use Slim\App as SlimApp;
+use Slim\Interfaces\RouteInterface;
 use Slim\Router;
 use SplFileInfo;
 use function file_get_contents;
@@ -130,32 +130,18 @@ class App extends SlimApp
             $route = $router->map(
                 $methods,
                 rtrim($pattern.ltrim($methodRoute->getPattern(), '/'), '/') ?: '/',
-                $this->createRouteCallback($instance, $reflectionMethod, $methodAnnotations)
+                [$instance, $reflectionMethod->getName()]
             );
             $route->setOutputBuffering($settings['outputBuffering']);
             if ($methodRoute->getName() !== null) {
                 $route->setName($methodRoute->getName());
             }
+            $this->handleActionAnnotations($methodAnnotations, $route);
 
         }
         if ($instance !== null) {
             $instance = null;
         }
-    }
-
-    /**
-     * @param                  $controllerInstance
-     * @param ReflectionMethod $method
-     * @param array            $annotations
-     *
-     * @return callable
-     */
-    protected function createRouteCallback(
-        $controllerInstance,
-        ReflectionMethod $method,
-        array $annotations = []
-    ): callable {
-        return [$controllerInstance, $method->getName()];
     }
 
     /**
@@ -236,5 +222,15 @@ class App extends SlimApp
         }
 
         return new AnnotationReader();
+    }
+
+    /**
+     * @param array          $methodAnnotations
+     * @param RouteInterface $route
+     *
+     * @return void
+     */
+    protected function handleActionAnnotations(array $methodAnnotations, RouteInterface $route)
+    {
     }
 }
