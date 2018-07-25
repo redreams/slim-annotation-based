@@ -13,7 +13,6 @@ namespace Redreams\Slim\Tests;
 
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\CachedReader;
-use function get_class;
 use PHPUnit\Framework\TestCase;
 use Redreams\Slim\App;
 use Redreams\Slim\Exception\InvalidArgumentException;
@@ -25,7 +24,6 @@ use Slim\Http\RequestBody;
 use Slim\Http\Response;
 use Slim\Router;
 use function http_build_query;
-use function var_dump;
 
 class AppTest extends TestCase
 {

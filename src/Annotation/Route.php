@@ -31,7 +31,7 @@ use function sprintf;
  */
 final class Route
 {
-    const AVAILABLE_METHODS = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'];
+    private const AVAILABLE_METHODS = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'];
     /**
      * @var string
      */
@@ -92,7 +92,7 @@ final class Route
      *
      * @return array|null
      */
-    public function getMethods()
+    public function getMethods(): ?array
     {
         return $this->methods;
     }
@@ -102,7 +102,7 @@ final class Route
      *
      * @return null|string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
