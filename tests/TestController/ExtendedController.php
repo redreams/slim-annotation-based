@@ -2,11 +2,11 @@
 
 namespace Redreams\Slim\Tests\TestController;
 
-use function get_class;
 use Redreams\Slim\AbstractController;
 use Redreams\Slim\Annotation\Route;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use function get_class;
 
 /**
  * @Route("/ext")

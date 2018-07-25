@@ -28,6 +28,7 @@ use Redreams\ClassFinder\ClassFinder;
 use Redreams\Slim\Annotation\Route;
 use Redreams\Slim\Exception\InvalidArgumentException;
 use ReflectionClass;
+use ReflectionMethod;
 use ReflectionParameter;
 use Slim\App as SlimApp;
 use Slim\Router;
@@ -114,10 +115,11 @@ class App extends SlimApp
             $pattern = sprintf('/%s/', trim($classRoute->getPattern(), '/'));
         }
         foreach ($relectionClass->getMethods() as $reflectionMethod) {
+            $methodAnnotations = $this->reader->getMethodAnnotations($reflectionMethod);
             /** @var Route $methodRoute */
             if ($reflectionMethod->isStatic()
                 || !$reflectionMethod->isPublic()
-                || ($methodRoute = $this->reader->getMethodAnnotation($reflectionMethod, Route::class)) === null
+                || ($methodRoute = $this->getAnnotation($methodAnnotations, Route::class)) === null
             ) {
                 continue;
             }
@@ -128,7 +130,7 @@ class App extends SlimApp
             $route = $router->map(
                 $methods,
                 rtrim($pattern.ltrim($methodRoute->getPattern(), '/'), '/') ?: '/',
-                [$instance, $reflectionMethod->getName()]
+                $this->createRouteCallback($instance, $reflectionMethod, $methodAnnotations)
             );
             $route->setOutputBuffering($settings['outputBuffering']);
             if ($methodRoute->getName() !== null) {
@@ -139,6 +141,38 @@ class App extends SlimApp
         if ($instance !== null) {
             $instance = null;
         }
+    }
+
+    /**
+     * @param                  $controllerInstance
+     * @param ReflectionMethod $method
+     * @param array            $annotations
+     *
+     * @return callable
+     */
+    protected function createRouteCallback(
+        $controllerInstance,
+        ReflectionMethod $method,
+        array $annotations = []
+    ): callable {
+        return [$controllerInstance, $method->getName()];
+    }
+
+    /**
+     * @param array  $annotations
+     * @param string $name
+     *
+     * @return object|null
+     */
+    protected function getAnnotation(array $annotations, string $name)
+    {
+        foreach ($annotations as $annotation) {
+            if ($annotation instanceof $name) {
+                return $annotation;
+            }
+        }
+
+        return null;
     }
 
     /**
