@@ -173,7 +173,7 @@ class App extends SlimApp
             FilesystemIterator::SKIP_DOTS | FilesystemIterator::FOLLOW_SYMLINKS
         );
         $iterator = new RecursiveCallbackFilterIterator($directoryIterator, function (SplFileInfo $file) {
-            return $file->isFile() && $file->getExtension() === 'php';
+            return $file->isDir() || ($file->isFile() && $file->getExtension() === 'php');
         });
         /** @var SplFileInfo $file */
         foreach (new RecursiveIteratorIterator($iterator) as $file) {
